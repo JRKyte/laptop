@@ -56,6 +56,13 @@ brew_install_or_upgrade() {
   fi
 }
 
+configure_mysql() {
+  mysql_install_db --verbose --user=`whoami` --basedir="$(brew --prefix mysql)" --datadir=/usr/local/var/mysql --tmpdir=/tmp
+  mkdir -p ~/Library/LaunchAgents
+  cp /usr/local/Cellar/mysql/5.*/homebrew.mxcl.mysql.plist ~/Library/LaunchAgents/
+  launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist
+}
+
 brew_is_installed() {
   local name="$(brew_expand_alias "$1")"
 
@@ -103,6 +110,10 @@ brew update
 
 fancy_echo "Installing Postgres, a good open source relational database ..."
   brew_install_or_upgrade 'postgres'
+
+fancy_echo "Installing mysql, an ok open source relational database ..."
+  brew_install_or_upgrade 'mysql'
+  configure_mysql
 
 fancy_echo "Installing Redis, a good key-value database ..."
   brew_install_or_upgrade 'redis'

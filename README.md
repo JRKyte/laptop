@@ -22,16 +22,16 @@ Install
 [Xcode]: https://itunes.apple.com/gb/app/xcode/id497799835?mt=12#
 
 2. Install the command line tools
-```sh
-xcode-select --install
-```
+  ```sh
+  xcode-select --install
+  ```
 
 3. Download, review, then execute the script:
 
-```sh
-curl --remote-name https://raw.githubusercontent.com/JRKyte/laptop/master/mac
-bash mac 2>&1 | tee ~/laptop.log
-```
+  ```sh
+  curl --remote-name https://raw.githubusercontent.com/JRKyte/laptop/master/mac
+  bash mac 2>&1 | tee ~/laptop.log
+  ```
 
 4. Restart the terminal
 
